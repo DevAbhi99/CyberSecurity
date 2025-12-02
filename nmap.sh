@@ -13,7 +13,7 @@ nmap <DNS name> or <ip address>
 
 #2) -sS scan
 
-nmap -sS <ip address> # It does the same thing as the basic scan
+nmap -sS <ip address> # It does the same thing as the basic scan. It stands for Syn Stealth
 
 #3) -p scan
 
@@ -131,3 +131,6 @@ nmap -sS --mtu 16 <target ip> #I can control or specify the size of chunks that 
 #c) spoofing the port. Suppose the firewall accepts request only from certain ports then I can fake the source port of the attacker
 
 nmap -sS --source-port 53 <target ip>  #suppose the firewall accepts from port 53 i told the target the my source port is 53 and the firewall will eblieve it
+
+nmap -sA <target IP> #It is used to track filtered and unfiltered ports to basicall check which ports are filtered by the firewall and which ports are not filtered by firewall. It means Ack stealth
+
