@@ -1,0 +1,101 @@
+#NMAP is a poweful vulnerability scanner tool which is used in scanning the target host (IP address or the host)
+
+
+#install nmap
+apt-get install nmap
+
+#Commands
+
+#1) We can do basic scan where the ip address or the host is scanner for open or vulnerable ports and by default first 1000 ports are scanned. 
+#The approach is that the source sends half tcp communication syn message and then does not respond to the syn ack message of the target host
+
+nmap <DNS name> or <ip address>
+
+#2) -sS scan
+
+nmap -sS <ip address> # It does the same thing as the basic scan
+
+#3) -p scan
+
+# It is used in scanning vulnerable ports of the target ip address. 
+
+#a) Scanning ip address on selected ports
+
+nmap -p 80,443 <ipaddress>
+
+#b) Scanning range of ports
+
+nmap -p 1-1000 <ipaddress>  #Scans the ip address on a range of ip address 1-1000 in this case
+
+#c) Scanning range of ip address
+
+nmap 192.168.1.1-20  #will scan from 192.168.1.1 to 192.168.1.1
+
+#d) Scanning the subnet or the CIDR (Classless Intra Domain Routing)
+
+nmap 192.168.1.1/24
+
+#4) -sn scan
+
+#It doesnt scan for ports but scans if the host is up which is the foremost thing to do in cyber security
+
+nmap -sn <target id address>
+
+#5) -O scan
+
+#Scans the operating system associated with the target address. Usually signatures are fetched on the basis of open and closed ports (pattern analysis)
+
+nmap -O <target>
+
+#6) -sV scan
+
+#Scans the service running on the target ip address or host
+
+nmap -sV <target>
+
+#7) -A scan
+
+#It is used in aggressive scanning of the host which does a copule of actions of other scan flags like scanning ports, services, oses and running nce scripts and running traceroute (To track the complete journey of packets from source to destination)
+
+nmap -A <target IP address>
+
+#8) -sT scan
+
+#It is used in sending tcp packets while scanning for the target host. Never use this scan because the source completes the whole 3 way handshake with client and a connection is established and the informarmation of the attacker is stored in the log or IDS can easily detect the attacker
+
+nmap -sT <target>
+
+#9) -sU scan
+
+#It sends UDP packets Not really affective nmap scan and usually packets are lost while using this scan
+
+nmap -sU <target>
+
+
+#10) storing results of nmap
+
+#a) -oN :- stores results in normal text
+
+nmap -p 80 <target> -oN result  #Stores in txt format
+
+#b) -oX :- stores in xml format
+
+nmap -p 80 <target> -oX result.xml
+
+#c) -oA :- stores in all format
+
+nmap -p 80 <target> -oA res
+
+
+#11) template based scanning
+
+#a) -T0
+#b) -T1
+#c)-T3
+#d) -T4
+#e) -T5
+
+#As the time increases in ascending order the the packets are sent quickly leading to packet loss or quick detection by IDS and blocking. T0 and T1 are the stealthier templates
+
+nmnap -p 80 -T1 <target host> 
+
