@@ -120,7 +120,7 @@ nmap --script=http-title <targethost>
 
 #a) Decoying:- it is like hiding in a group where the attacker confuses the IDS logs with multiple IP addresses
 
-nmap -sS -D <Fake IP>, <Fake IP>,ME <target ip>
+nmap -sS -D <Fake IP>,<Fake IP>,ME <target ip>
 
 #b) Fragmenting:- breaking the packets into smaller pieces. Liek suppose the firewall is configured in such a way that it does not allow big chunk of packets for example if we want to send payload to harm the system then we can send packets in smaller chunks to confuse the firewall
 
