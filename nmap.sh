@@ -115,3 +115,19 @@ nmap --script=http-enum <targethost>
 nmap --script=http-headers <targethost>
 nmap --script=http-title <targethost>
 
+
+#12) Advanced Evasion strategies to save myself from IDS/firewalls (Do not use on random urls only on owned linux systems)
+
+#a) Decoying:- it is like hiding in a group where the attacker confuses the IDS logs with multiple IP addresses
+
+nmap -sS -D <Fake IP>, <Fake IP>,ME <target ip>
+
+#b) Fragmenting:- breaking the packets into smaller pieces. Liek suppose the firewall is configured in such a way that it does not allow big chunk of packets for example if we want to send payload to harm the system then we can send packets in smaller chunks to confuse the firewall
+
+nmap -sS -f <target ip>  #Default breaking of packets into random bits of smaller chunks
+
+nmap -sS --mtu 16 <target ip> #I can control or specify the size of chunks that the packet will split into
+
+#c) spoofing the port. Suppose the firewall accepts request only from certain ports then I can fake the source port of the attacker
+
+nmap -sS --source-port 53 <target ip>  #suppose the firewall accepts from port 53 i told the target the my source port is 53 and the firewall will eblieve it
