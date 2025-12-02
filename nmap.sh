@@ -97,5 +97,21 @@ nmap -p 80 <target> -oA res
 
 #As the time increases in ascending order the the packets are sent quickly leading to packet loss or quick detection by IDS and blocking. T0 and T1 are the stealthier templates
 
-nmnap -p 80 -T1 <target host> 
+nmap -p 80 -T1 <target host> 
+
+#12) NSE:- It stands for NMAP script engine which makes nmap more than just a port scanner. NSE makes NMAP a mini cyber sec framework to scan for vulnerabilities
+
+#a) -sC scan - It is used for basic scan of the target host used for checking basic info, protocols check or banner grabbing
+
+nmap -sC <target>
+
+#b) --script=vuln scan it used to check for vulnerability and only used on target apps where you are authorized to perform the scan
+
+nmap --script=vuln <target host>
+
+#c) --script=http-<mode> used for getting http information
+
+nmap --script=http-enum <targethost>
+nmap --script=http-headers <targethost>
+nmap --script=http-title <targethost>
 
